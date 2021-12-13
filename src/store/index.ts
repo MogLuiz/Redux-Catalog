@@ -1,11 +1,9 @@
 // CreateStore
 import { createStore } from "redux"
 
-// Reducers
-import cart from "./modules/cart/reducer"
+// CombineReducers
+import rootReducers from "./modules/rootReducers"
 
-const store = createStore(() => ({
-    cart,
-}))
+const store = createStore(rootReducers)
 
 export default store
