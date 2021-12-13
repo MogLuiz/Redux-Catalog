@@ -11,7 +11,7 @@ import { addProductToCart } from "../../store/modules/cart/actions";
 // Types
 import { IProduct } from "./types";
 
-const Catalog = () => {
+const Catalog: React.FC = () => {
   // -------------------------------------------------
   // States
   // -------------------------------------------------
