@@ -1,5 +1,11 @@
+// CreateStore
 import { createStore } from "redux"
 
-const store = createStore(() => [])
+// Reducers
+import cart from "./modules/cart/reducer"
+
+const store = createStore(() => ({
+    cart,
+}))
 
 export default store
