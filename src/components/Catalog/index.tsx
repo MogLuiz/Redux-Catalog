@@ -1,10 +1,10 @@
 // Hooks
-import { useStore } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Catalog = () => {
-  const store = useStore();
+  const catalog = useSelector((state) => state.email);
 
-  console.log(store.getState());
+  console.log(catalog);
 
   return <h1>Catalog</h1>;
 };
