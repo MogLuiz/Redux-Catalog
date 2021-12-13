@@ -13,19 +13,21 @@ const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
 
             const { product } = action.payload;
 
-            state.items.push({
-                product,
-                quantity: 1
-            })
-
-            break;
+            return {
+                ...state,
+                items: [
+                    ...state.items,
+                    {
+                        product,
+                        quantity: 1,
+                    }
+                ]
+            }
         }
         default: {
             return state
         }
     }
-
-    return INITIAL_STATE;
 }
 
 export default cart
