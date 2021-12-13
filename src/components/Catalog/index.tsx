@@ -1,10 +1,12 @@
 // Hooks
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
-const Catalog = () => {
-  const catalog = useSelector((state) => state);
+// Types
+import { IProduct } from "./types";
 
-  console.log(catalog);
+const Catalog = () => {
+  const [catalog, setCatalog] = useState<IProduct[]>([]);
 
   return <h1>Catalog</h1>;
 };
