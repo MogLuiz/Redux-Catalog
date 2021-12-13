@@ -2,7 +2,7 @@
 import { useSelector } from "react-redux";
 
 const Catalog = () => {
-  const catalog = useSelector((state) => state.email);
+  const catalog = useSelector((state) => state);
 
   console.log(catalog);
 
