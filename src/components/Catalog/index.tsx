@@ -1,9 +1,12 @@
 // Hooks
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // API
 import api from "../../services/api";
+
+// Actions
+import { addProductToCart } from "../../store/modules/cart/actions";
 
 // Types
 import { IProduct } from "./types";
@@ -19,11 +22,21 @@ const Catalog = () => {
   // Hooks
   // -------------------------------------------------
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     api.get("products").then((response) => {
       setCatalog(response.data);
     });
   }, []);
+
+  // -------------------------------------------------
+  // Functions
+  // -------------------------------------------------
+
+  const handleAddProductToCart = (product: IProduct) => {
+    dispatch(addProductToCart(product));
+  };
 
   // -------------------------------------------------
   // Return
@@ -35,7 +48,9 @@ const Catalog = () => {
         <article key={product.id}>
           <strong>{product.title}</strong> {" - "}
           <span>{product.price}</span> {"  "}
-          <button type="button">Comprar</button>
+          <button type="button" onClick={() => handleAddProductToCart(product)}>
+            Comprar
+          </button>
         </article>
       ))}
     </main>
