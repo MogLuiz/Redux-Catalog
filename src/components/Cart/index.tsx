@@ -4,14 +4,18 @@ import { useSelector } from "react-redux";
 
 // Hooks
 
+// Types
+import { IStoreState } from "../../store";
+import { ICartItem } from "../../store/modules/cart/types";
+
 const Cart: React.FC = () => {
   // -------------------------------------------------
   // Hooks
   // -------------------------------------------------
 
-  const state = useSelector((state) => state);
-
-  console.log(state);
+  const cart = useSelector<IStoreState, ICartItem[]>(
+    (state) => state.cart.items
+  );
 
   // -------------------------------------------------
   // Return
