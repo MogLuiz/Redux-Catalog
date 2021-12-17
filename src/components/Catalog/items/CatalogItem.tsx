@@ -1,6 +1,14 @@
+// Packages
 import React from "react";
 
-const CatalogItem: React.FC = () => {
+// Types
+import { IProduct } from "../../../store/modules/cart/types";
+
+interface ICatalogItemProps {
+  product: IProduct;
+}
+
+const CatalogItem: React.FC<ICatalogItemProps> = ({ product }) => {
   return (
     <article>
       <strong>{product.title}</strong> {" - "}
