@@ -10,6 +10,9 @@ import { composeWithDevTools } from "redux-devtools-extension"
 // Middlewars
 import createSagaMiddleware from "redux-saga"
 
+// RootSaga
+import rootSaga from "./modules/rootSaga"
+
 // Types
 import { ICartState } from "./modules/cart/types"
 export interface IStoreState {
@@ -22,6 +25,6 @@ const middlewars = [sagaMiddleware]
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middlewars)),)
 
-// sagaMiddleware.run()
+sagaMiddleware.run(rootSaga)
 
 export default store
