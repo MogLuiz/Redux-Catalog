@@ -13,6 +13,11 @@ import { AxiosResponse } from "axios";
 
 type checkProductStockRequest = ReturnType<typeof addProductToCartRequest>
 
+interface IStockResponse {
+    id: number;
+    quantity: number;
+}
+
 function* checkProductStock ({ payload }: checkProductStockRequest) {
     
     const { product } = payload
@@ -21,7 +26,7 @@ function* checkProductStock ({ payload }: checkProductStockRequest) {
         return state.cart.items.find(item => item.product.id === product.id)?.quantity ?? 0;
     })
 
-    const availableStockResponse: AxiosResponse = yield call(api.get, `stock/${product.id}`)
+    const availableStockResponse: AxiosResponse<IStockResponse> = yield call(api.get, `stock/${product.id}`)
   
 }
 
