@@ -2,7 +2,7 @@
 import produce from 'immer';
 
 // Types
-import { ICartState } from './types';
+import { ICartState, ActionTypes } from './types';
 import { Reducer } from "redux"
 
 const INITIAL_STATE: ICartState = {
@@ -16,7 +16,7 @@ const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
 
         switch (action.type) {
                  
-            case "ADD_PRODUCT_TO_CART_SUCCESS": {
+            case ActionTypes.addProductToCartSuccess : {
 
                 const { product } = action.payload;
 
@@ -33,8 +33,10 @@ const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
 
                 break
             }
-            case "ADD_PRODUCT_TO_CART_FAILURE": {
+            case ActionTypes.addProductToCartFailure: {
+
                 draft.failedStockCheck.push(action.payload.productId)
+                
                 break
             }
             default: {
