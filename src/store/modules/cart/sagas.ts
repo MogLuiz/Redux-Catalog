@@ -1,8 +1,9 @@
+
 // Saga Effects
-import { all, call, select, takeLatest } from "redux-saga/effects"
+import { all, call, select, takeLatest, put } from "redux-saga/effects"
 
 // Actions
-import { addProductToCartRequest } from "./actions"
+import { addProductToCartRequest, addProductToCartSuccess, addProductToCartFailure } from "./actions"
 
 // API
 import api from "../../../services/api";
@@ -27,6 +28,12 @@ function* checkProductStock ({ payload }: checkProductStockRequest) {
     })
 
     const availableStockResponse: AxiosResponse<IStockResponse> = yield call(api.get, `stock/${product.id}`)
+
+    if(availableStockResponse.data.quantity > currentQuantity) {
+        yield put(addProductToCartSuccess(product))
+    } else {
+        yield put(addProductToCartFailure(product))
+    }
   
 }
 
