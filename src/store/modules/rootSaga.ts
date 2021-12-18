@@ -2,10 +2,10 @@
 import { all } from "redux-saga/effects"
 
 // Sagas
-import cart from "./cart/reducer"
+import cart from "./cart/sagas"
 
-export default function* rootSaga(): any{
-    return yield all([
+export default function* rootSaga() {
+    yield all([
         cart,
     ]) 
 }
