@@ -2,7 +2,7 @@
 import React from "react";
 
 // Actions
-import { addProductToCart } from "../../../store/modules/cart/actions";
+import { addProductToCartRequest } from "../../../store/modules/cart/actions";
 
 // Hooks
 import { useDispatch } from "react-redux";
@@ -26,7 +26,7 @@ const CatalogItem: React.FC<ICatalogItemProps> = ({ product }) => {
   // -------------------------------------------------
 
   const handleAddProductToCart = () => {
-    dispatch(addProductToCart(product));
+    dispatch(addProductToCartRequest(product));
   };
 
   // -------------------------------------------------
