@@ -41,9 +41,16 @@ const CatalogItem: React.FC<ICatalogItemProps> = ({ product }) => {
     <article>
       <strong>{product.title}</strong> {" - "}
       <span>{product.price}</span> {"  "}
-      <button type="button" onClick={handleAddProductToCart}>
+      <button
+        type="button"
+        onClick={handleAddProductToCart}
+        disabled={hasFailedStockCheck}
+      >
         Comprar
       </button>
+      {hasFailedStockCheck && (
+        <span style={{ color: "red" }}>Falta de estoque</span>
+      )}
     </article>
   );
 };
