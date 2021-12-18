@@ -1,7 +1,10 @@
 // Saga Effects
 import { all, takeLatest } from "redux-saga/effects"
+import { addProductToCart } from "./actions"
 
-const checkProductStock = () => {
+type checkProductStockRequest = ReturnType<typeof addProductToCart>
+
+const checkProductStock = (action: checkProductStockRequest) => {
     console.log("Adicionou ao carrinho")
   
 }
