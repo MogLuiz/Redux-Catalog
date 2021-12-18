@@ -1,7 +1,15 @@
-import { IStoreState } from './../../index';
 // Saga Effects
-import { all, select, takeLatest } from "redux-saga/effects"
+import { all, call, select, takeLatest } from "redux-saga/effects"
+
+// Actions
 import { addProductToCartRequest } from "./actions"
+
+// API
+import api from "../../../services/api";
+
+// Types
+import { IStoreState } from './../../index';
+import { AxiosResponse } from "axios";
 
 type checkProductStockRequest = ReturnType<typeof addProductToCartRequest>
 
@@ -13,7 +21,7 @@ function* checkProductStock ({ payload }: checkProductStockRequest) {
         return state.cart.items.find(item => item.product.id === product.id)?.quantity ?? 0;
     })
 
-    console.log(currentQuantity)
+    const availableStockResponse: AxiosResponse = yield call(api.get, `stock/${product.id}`)
   
 }
 
