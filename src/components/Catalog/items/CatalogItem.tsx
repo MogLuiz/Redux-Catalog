@@ -5,10 +5,11 @@ import React from "react";
 import { addProductToCartRequest } from "../../../store/modules/cart/actions";
 
 // Hooks
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // Types
 import { IProduct } from "../../../store/modules/cart/types";
+import { IStoreState } from "../../../store";
 
 interface ICatalogItemProps {
   product: IProduct;
@@ -20,6 +21,10 @@ const CatalogItem: React.FC<ICatalogItemProps> = ({ product }) => {
   // -------------------------------------------------
 
   const dispatch = useDispatch();
+
+  const hasFailedStockCheck = useSelector<IStoreState, boolean>((state) => {
+    return state.cart.failedStockCheck.includes(product.id);
+  });
 
   // -------------------------------------------------
   // Functions
