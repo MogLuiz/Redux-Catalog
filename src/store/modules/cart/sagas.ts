@@ -12,6 +12,8 @@ function* checkProductStock ({ payload }: checkProductStockRequest) {
     const currentQuantity: number = yield select((state: IStoreState) => {
         return state.cart.items.find(item => item.product.id === product.id)?.quantity ?? 0;
     })
+
+    console.log(currentQuantity)
   
 }
 
