@@ -32,7 +32,7 @@ function* checkProductStock ({ payload }: checkProductStockRequest) {
     if(availableStockResponse.data.quantity > currentQuantity) {
         yield put(addProductToCartSuccess(product))
     } else {
-        yield put(addProductToCartFailure(product))
+        yield put(addProductToCartFailure(product.id))
     }
   
 }

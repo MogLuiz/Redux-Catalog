@@ -19,7 +19,7 @@ export const addProductToCartSuccess = (product: IProduct) => {
     }
 }
 
-export const addProductToCartFailure = (productId: IProduct) => {
+export const addProductToCartFailure = (productId: Number) => {
     return {
         type: "ADD_PRODUCT_TO_CART_FAILURE",
         payload: {
